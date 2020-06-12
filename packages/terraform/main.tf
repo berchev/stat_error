@@ -10,22 +10,17 @@ terraform {
   }
 }  
 
-resource "random_pet" "name2" {
- length    = "18"
- separator = "-"
+variable "region"{}
+
+provider "aws" {
+  region = var.region
 }
 
-resource "random_pet" "name3" {
- length    = "18"
- separator = "-"
-}
+resource "aws_instance" "web1" {
+  ami           = "ami-056569351c9d4c8cf"
+  instance_type = "t2.micro"
 
-resource "random_pet" "name4" {
- length    = "2"
- separator = "-"
-}
-
-resource "random_pet" "name5" {
- length    = "3"
- separator = "-"
+  tags = {
+    Name = "HelloNginx1"
+  }
 }
