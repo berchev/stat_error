@@ -19,3 +19,8 @@ resource "random_pet" "name3" {
  length    = "18"
  separator = "-"
 }
+
+resource "random_pet" "name4" {
+ length    = "1"
+ separator = "-"
+}
