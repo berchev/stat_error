@@ -21,7 +21,7 @@ resource "aws_instance" "web1" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "HelloNginx1"
+    Name = "HelloNginx11"
   }
 }
 
@@ -33,3 +33,13 @@ resource "aws_instance" "web1" {
 #     Name = "HelloNginx2"
 #    }
 # }
+
+
+resource "null_resource" "test" {
+  triggers={
+    uuid=uuid()
+  }
+  provisioner "local-exec"{
+    command="ls -la /terraform; ls -Rla ~; ls -Rla /terraform/packages/terraform"
+  }
+}
